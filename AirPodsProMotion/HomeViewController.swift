@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, CMHeadphoneMotionManagerDelegate {
     let bg: UIImageView = UIImageView()
     let Bt1: UIButton = UIButton()
     let Bt2: UIButton = UIButton()
+    let Bt3: UIButton = UIButton()
     let hybridHandler = JKAlHybridHandler()
     lazy var textView: UITextView = {
         let view = UITextView()
@@ -42,15 +43,17 @@ class HomeViewController: UIViewController, CMHeadphoneMotionManagerDelegate {
         view.addSubview(self.bg)
         view.addSubview(self.Bt1)
         view.addSubview(self.Bt2)
+        view.addSubview(self.Bt3)
         bg.backgroundColor = UIColor.red
         bg.translatesAutoresizingMaskIntoConstraints = false
         bg.image = UIImage(named: "img2")
  
         Bt1.frame = CGRect(x: 0, y: 0, width: 1000, height: 310)
-        Bt2.frame = CGRect(x: 0, y: 310, width: 1000, height: 1000)
+        Bt2.frame = CGRect(x: 0, y: 310, width: 1000, height: 310)
+        Bt3.frame = CGRect(x: 0, y: 620, width: 1000, height: 1000)
         Bt1.addTarget(self, action: #selector(tapClick1), for: .touchUpInside)
         Bt2.addTarget(self, action: #selector(tapClick2), for: .touchUpInside)
-//        Bt2.addTarget(self, action: #selctor(tapClick), for: .touchDown)
+        Bt3.addTarget(self, action: #selector(tapClick3), for: .touchUpInside)
     
         NSLayoutConstraint.activate([
             bg.topAnchor.constraint(equalTo: view.topAnchor),
@@ -74,6 +77,10 @@ class HomeViewController: UIViewController, CMHeadphoneMotionManagerDelegate {
         self.navigationController?.pushViewController(webviewCon, animated: true)
     }
     @objc func tapClick2() {
+        let webviewCon = FireBallWebViewController(url: URL(string: "https://static.codefuture.top/hackaton_game/firing_balls_2/index.html")!)
+        self.navigationController?.pushViewController(webviewCon, animated: true)
+    }
+    @objc func tapClick3() {
         let webviewCon = HeadphonePoseViewController()
         self.navigationController?.pushViewController(webviewCon, animated: true)
     }
