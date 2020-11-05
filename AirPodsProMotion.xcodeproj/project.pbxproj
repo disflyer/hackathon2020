@@ -377,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B7AA215BEA82F399A66866D6 /* Pods-AirPodsProMotion.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LFY3N8VA94;
@@ -388,7 +389,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.okjike.airpodgame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -396,6 +397,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ABAB060DBA6B442B50B0F657 /* Pods-AirPodsProMotion.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LFY3N8VA94;
@@ -407,7 +409,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.okjike.airpodgame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
