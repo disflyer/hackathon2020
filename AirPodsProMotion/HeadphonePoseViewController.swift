@@ -23,13 +23,14 @@ class HeadphonePoseViewController: UIViewController, CMHeadphoneMotionManagerDel
     var label: UILabel = UILabel()
     var left: UILabel = UILabel()
     var right: UILabel = UILabel()
+    var up: UILabel = UILabel()
+    var down: UILabel = UILabel()
     
     private var motionManager = CMHeadphoneMotionManager()
     private var headNode: SCNNode?
     private var referenceFrame = matrix_identity_float4x4
-    private var pitchRef = 0.0, yawRef = 0.0, rollRef = 0.0
-    private let rateThreshold = 0.5
-    private let gapThreshold = 0.05
+    private var headPoint = simd_float4(0.0, 1.0, 0.0, 0.0)
+    private var towerPoint = simd_float4(0.0, 0.0, 1.0, 0.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,8 @@ class HeadphonePoseViewController: UIViewController, CMHeadphoneMotionManagerDel
         self.view.addSubview(label)
         self.view.addSubview(left)
         self.view.addSubview(right)
+        self.view.addSubview(up)
+        self.view.addSubview(down)
         
         sceneView.translatesAutoresizingMaskIntoConstraints = false
         motionButton.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +51,8 @@ class HeadphonePoseViewController: UIViewController, CMHeadphoneMotionManagerDel
         label.translatesAutoresizingMaskIntoConstraints = false
         left.translatesAutoresizingMaskIntoConstraints = false
         right.translatesAutoresizingMaskIntoConstraints = false
+        up.translatesAutoresizingMaskIntoConstraints = false
+        down.translatesAutoresizingMaskIntoConstraints = false
         
         
         motionButton.setTitle("开始追踪", for: .normal)
@@ -57,6 +62,10 @@ class HeadphonePoseViewController: UIViewController, CMHeadphoneMotionManagerDel
         left.font = left.font.withSize(40)
         right.text = "右"
         right.font = right.font.withSize(40)
+        up.text = "上"
+        up.font = up.font.withSize(40)
+        down.text = "下"
+        down.font = down.font.withSize(40)
         
         
         NSLayoutConstraint.activate([
@@ -70,11 +79,15 @@ class HeadphonePoseViewController: UIViewController, CMHeadphoneMotionManagerDel
             motionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             motionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             
-            left.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            left.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
             left.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
-            
-            right.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+            right.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -40),
             right.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            
+            up.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 40),
+            up.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            down.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
+            down.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
             
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
@@ -186,9 +199,6 @@ class HeadphonePoseViewController: UIViewController, CMHeadphoneMotionManagerDel
     {
         if let deviceMotion = motionManager.deviceMotion {
             referenceFrame = float4x4(rotationMatrix: deviceMotion.attitude.rotationMatrix).inverse
-            pitchRef = deviceMotion.attitude.pitch
-            yawRef = deviceMotion.attitude.yaw
-            rollRef = deviceMotion.attitude.roll
         }
     }
     // MARK: - CMHeadphoneMotionManagerDelegate
@@ -216,21 +226,50 @@ class HeadphonePoseViewController: UIViewController, CMHeadphoneMotionManagerDel
         ])
 
         headNode?.simdTransform = mirrorTransform * rotation * referenceFrame
+        let newHead = headPoint * mirrorTransform * rotation * referenceFrame
         
-        if abs(deviceMotion.rotationRate.z) > rateThreshold {
-            if deviceMotion.rotationRate.z > 0 && deviceMotion.attitude.roll - rollRef > gapThreshold {
-                left.textColor = .green
-                right.textColor = .white
-                label.text = ("角度: " + "\((deviceMotion.attitude.roll-rollRef))")
-            } else if deviceMotion.rotationRate.z < 0 && rollRef - deviceMotion.attitude.roll > gapThreshold {
-                right.textColor = .green
-                left.textColor = .white
-                label.text = ("角度: " + "\((deviceMotion.attitude.roll-rollRef))")
-            } else {
-                left.textColor = .white
-                right.textColor = .white
-            }
+//        let newX = newHead[0]
+//        if newX > 0 {
+//            print("left")
+//            left.textColor = .green
+//            right.textColor = .white
+//        } else if newX < 0 {
+//            print("right")
+//            right.textColor = .green
+//            left.textColor = .white
+//
+//        } else {
+//            left.textColor = .white
+//            right.textColor = .white
+//        }
+//        label.text = "\((Int)(newX / maxHeadX * 100))%, \((Int)(asin(newX) * 1800 / Float.pi))°"
+//
+//        let newZ = newHead[2]
+//        if newZ > 0 {
+//            print("up")
+//            up.textColor = .green
+//            down.textColor = .white
+//        } else if newZ < 0 {
+//            print("down")
+//            down.textColor = .green
+//            up.textColor = .white
+//        } else {
+//            up.textColor = .white
+//            up.textColor = .green
+//        }
+        
+        let newTower = towerPoint * mirrorTransform * rotation * referenceFrame
+        let newTowerX = newTower[0]
+        if newTowerX < 0 {
+            print("towerLeft")
+            left.textColor = .green
+            right.textColor = .white
+        } else if newTowerX > 0 {
+            print("towerRight")
+            right.textColor = .green
+            left.textColor = .white
         }
+        label.text = "\((Int)(asin(newTowerX) * 540 / Float.pi))°"
 
         updateButtonState()
     }

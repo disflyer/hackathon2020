@@ -8,14 +8,22 @@
 import Foundation
 import JKWebViewKit
 import CoreMotion
+import simd
 
 class WebViewController: JKWebViewController, CMHeadphoneMotionManagerDelegate {
     
     let handler = JKHybridHandler()
+    private var referenceButton: UIButton = UIButton()
     private var motionManager = CMHeadphoneMotionManager()
-    private var pitchRef = 0.0, yawRef = 0.0, rollRef = 0.0
-    private let rateThreshold = 0.5
-    private let gapThreshold = 0.05
+    private var referenceFrame = matrix_identity_float4x4
+    private var headPoint = simd_float4(0.0, 1.0, 0.0, 0.0)
+    private let mirrorTransform = simd_float4x4([
+        simd_float4(-1.0, 0.0, 0.0, 0.0),
+        simd_float4( 0.0, 1.0, 0.0, 0.0),
+        simd_float4( 0.0, 0.0, 1.0, 0.0),
+        simd_float4( 0.0, 0.0, 0.0, 1.0)
+    ])
+    private var upCnt = 0;
     
     override init(url: URL) {
         
@@ -23,16 +31,26 @@ class WebViewController: JKWebViewController, CMHeadphoneMotionManagerDelegate {
         handler.enableHybridHandlers()
         
         super.init(url: url)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { // Change `2.0` to the desired number of seconds.
-           // Code you want to be delayed
-            self.webView.evaluateJavaScript("window.webDispatch&&window.webDispatch('left')")
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { // Change `2.0` to the desired number of seconds.
+//           // Code you want to be delayed
+//            self.webView.evaluateJavaScript("window.webDispatch&&window.webDispatch('left')")
+//        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         motionManager.delegate = self
         webView.scrollView.contentInsetAdjustmentBehavior = .never
+        
+        self.view.addSubview(referenceButton)
+        self.view.bringSubviewToFront(referenceButton)
+        referenceButton.translatesAutoresizingMaskIntoConstraints = false
+        referenceButton.setTitle("复位", for: .normal)
+        NSLayoutConstraint.activate([
+            referenceButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            referenceButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
+        ])
+        referenceButton.addTarget(self, action: #selector(referenceFrameButtonWasTapped), for: .touchUpInside)
         
         if !motionManager.isDeviceMotionActive {
             weak var weakSelf = self
@@ -52,20 +70,43 @@ class WebViewController: JKWebViewController, CMHeadphoneMotionManagerDelegate {
         }
     }
     
+    @IBAction func referenceFrameButtonWasTapped(_ sender: UIButton)
+    {
+        if let deviceMotion = motionManager.deviceMotion {
+            referenceFrame = float4x4(rotationMatrix: deviceMotion.attitude.rotationMatrix).inverse
+        }
+    }
+    
     // MARK: Headphone Device Motion Handlers
     
     func headphoneMotionManager(_ motionManager: CMHeadphoneMotionManager, didUpdate deviceMotion: CMDeviceMotion) {
         
-        if abs(deviceMotion.rotationRate.z) > rateThreshold {
-            if deviceMotion.rotationRate.z > 0 && deviceMotion.attitude.roll - rollRef > gapThreshold {
-                print("left")
-                self.webView.evaluateJavaScript("window.webDispatch&&window.webDispatch('left')")
-            } else if deviceMotion.rotationRate.z < 0 && rollRef - deviceMotion.attitude.roll > gapThreshold {
-                print("right")
-                self.webView.evaluateJavaScript("window.webDispatch&&window.webDispatch('right')")
-                }
-        }
+        let rotation = float4x4(rotationMatrix: deviceMotion.attitude.rotationMatrix)
 
+        let newHead = headPoint * mirrorTransform * rotation * referenceFrame
+        
+        let newX = newHead[0]
+        let percent = min((Int)(abs(asin(newX)) * 1400 / Float.pi), 100)
+        if newX > 0 {
+            print("'left', \(percent)")
+            self.webView.evaluateJavaScript("window.webDispatch&&window.webDispatch('left', \(percent))")
+        } else if newX < 0 {
+            print("'right', \(percent)")
+            self.webView.evaluateJavaScript("window.webDispatch&&window.webDispatch('right', \(percent))")
+        }
+        
+        let newZ = newHead[2]
+        if newZ > 0 {
+            print("up")
+            upCnt += 1
+            if upCnt % 4 == 0 {
+                self.webView.evaluateJavaScript("window.webDispatch&&window.webDispatch('top')")
+            }
+        } else if newZ < 0 {
+            print("down")
+            upCnt = 0
+            self.webView.evaluateJavaScript("window.webDispatch&&window.webDispatch('bottom')")
+        }
     }
     
     func headphoneMotionManager(_ motionManager: CMHeadphoneMotionManager, didFail error: Error) {

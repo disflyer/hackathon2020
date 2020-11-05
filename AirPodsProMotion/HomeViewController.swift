@@ -70,11 +70,11 @@ class HomeViewController: UIViewController, CMHeadphoneMotionManagerDelegate {
         APP.stopDeviceMotionUpdates()
     }
     @objc func tapClick1() {
-        let webviewCon = WebViewController(url: URL(string: "https://static.codefuture.top/hackaton_game/aircraft_war_1/index.html")!)
+        let webviewCon = WebViewController(url: URL(string: "https://static.codefuture.top/hackaton_game/aircraft_war_3/index.html")!)
         self.navigationController?.pushViewController(webviewCon, animated: true)
     }
     @objc func tapClick2() {
-        let webviewCon = WebViewController(url: URL(string: "https://m.baidu.com")!)
+        let webviewCon = HeadphonePoseViewController()
         self.navigationController?.pushViewController(webviewCon, animated: true)
     }
     
