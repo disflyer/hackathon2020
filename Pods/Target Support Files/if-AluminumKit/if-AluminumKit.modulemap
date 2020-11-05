@@ -1,0 +1,6 @@
+framework module AluminumKit {
+  umbrella header "if-AluminumKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

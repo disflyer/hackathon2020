@@ -1,0 +1,6 @@
+framework module JKWebViewKit {
+  umbrella header "if-JKWebViewKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

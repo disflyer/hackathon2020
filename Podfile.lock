@@ -1,0 +1,63 @@
+PODS:
+  - if-AluminumKit/JKNavigationBarController (0.7.0):
+    - if-AluminumKit/Utilities
+    - JasonKit
+    - RxCocoa
+    - RxSwift
+    - SnapKit
+  - if-AluminumKit/Utilities (0.7.0)
+  - if-JKWebViewKit (0.1.3):
+    - if-JKWebViewKit/AluminumKit (= 0.1.3)
+    - if-JKWebViewKit/Core (= 0.1.3)
+  - if-JKWebViewKit/AluminumKit (0.1.3):
+    - if-AluminumKit/JKNavigationBarController
+    - if-JKWebViewKit/Core
+  - if-JKWebViewKit/Core (0.1.3):
+    - JasonKit
+    - ObjectMapper (~> 3.5.2)
+    - RxCocoa (~> 5.1.1)
+    - RxSwift (~> 5.1.1)
+    - SnapKit (~> 5.0.1)
+  - JasonKit (0.3.7):
+    - JasonKit/Foundation (= 0.3.7)
+    - JasonKit/UIKit (= 0.3.7)
+  - JasonKit/Foundation (0.3.7)
+  - JasonKit/UIKit (0.3.7):
+    - JasonKit/Foundation
+  - ObjectMapper (3.5.3)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - if-JKWebViewKit
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - ObjectMapper
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SnapKit
+  https://github.com/iftechio/JKPodSpecs:
+    - if-AluminumKit
+    - if-JKWebViewKit
+    - JasonKit
+
+SPEC CHECKSUMS:
+  if-AluminumKit: 15f3a5cfe02638bbdd4c71a8ae118c4b539de955
+  if-JKWebViewKit: d5dddb5802ffd07d5770ce1cbdf4082a9c26e817
+  JasonKit: a66551c70b16efde42d97de461aba356fdbef033
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: d6de5745a95b8b70959a139bf125008939ba60ec
+
+COCOAPODS: 1.10.0

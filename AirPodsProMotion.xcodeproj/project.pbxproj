@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,9 +15,13 @@
 		8EB3738625275C8600B9B3C0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB3738525275C8600B9B3C0 /* TableViewController.swift */; };
 		8EB3738B2527649700B9B3C0 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB3738A2527649700B9B3C0 /* TopViewController.swift */; };
 		8EF9EA05251B690C00D239C4 /* SK3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9EA04251B690C00D239C4 /* SK3DViewController.swift */; };
+		B0CD776FF19CFC8A54E4EF6E /* Pods_AirPodsProMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542296E83AB22871919F3006 /* Pods_AirPodsProMotion.framework */; };
+		C1ADD7402553CABB00BED4DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ADD73F2553CABB00BED4DD /* ViewController.swift */; };
+		C1ADD7442553E97300BED4DD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ADD7432553E97300BED4DD /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		542296E83AB22871919F3006 /* Pods_AirPodsProMotion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirPodsProMotion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4A85D5251A37600077CDAC /* AirPodsProMotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirPodsProMotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4A85D8251A37600077CDAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E4A85DA251A37600077CDAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +32,10 @@
 		8EB3738525275C8600B9B3C0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		8EB3738A2527649700B9B3C0 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		8EF9EA04251B690C00D239C4 /* SK3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SK3DViewController.swift; sourceTree = "<group>"; };
+		ABAB060DBA6B442B50B0F657 /* Pods-AirPodsProMotion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirPodsProMotion.release.xcconfig"; path = "Target Support Files/Pods-AirPodsProMotion/Pods-AirPodsProMotion.release.xcconfig"; sourceTree = "<group>"; };
+		B7AA215BEA82F399A66866D6 /* Pods-AirPodsProMotion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirPodsProMotion.debug.xcconfig"; path = "Target Support Files/Pods-AirPodsProMotion/Pods-AirPodsProMotion.debug.xcconfig"; sourceTree = "<group>"; };
+		C1ADD73F2553CABB00BED4DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "/Users/disflyer/Desktop/hack/AirPodsPro-Motion-Sampler/AirPodsProMotion/ViewController.swift"; sourceTree = "<absolute>"; };
+		C1ADD7432553E97300BED4DD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0CD776FF19CFC8A54E4EF6E /* Pods_AirPodsProMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +55,8 @@
 			children = (
 				8E4A85D7251A37600077CDAC /* AirPodsProMotion */,
 				8E4A85D6251A37600077CDAC /* Products */,
+				A9FDBD7795AA6813178E8F2C /* Pods */,
+				BA164F9DC5FAF51A627457FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,10 +71,12 @@
 		8E4A85D7251A37600077CDAC /* AirPodsProMotion */ = {
 			isa = PBXGroup;
 			children = (
+				C1ADD73F2553CABB00BED4DD /* ViewController.swift */,
 				8EB3738A2527649700B9B3C0 /* TopViewController.swift */,
 				8E4A85DC251A37600077CDAC /* InformationViewController.swift */,
 				8EF9EA04251B690C00D239C4 /* SK3DViewController.swift */,
 				8EB3738525275C8600B9B3C0 /* TableViewController.swift */,
+				C1ADD7432553E97300BED4DD /* WebViewController.swift */,
 				8EB3739025276E3100B9B3C0 /* Supporting Files */,
 				8E4A85E1251A37610077CDAC /* Assets.xcassets */,
 				8E4A85E3251A37610077CDAC /* LaunchScreen.storyboard */,
@@ -81,6 +94,23 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A9FDBD7795AA6813178E8F2C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B7AA215BEA82F399A66866D6 /* Pods-AirPodsProMotion.debug.xcconfig */,
+				ABAB060DBA6B442B50B0F657 /* Pods-AirPodsProMotion.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BA164F9DC5FAF51A627457FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				542296E83AB22871919F3006 /* Pods_AirPodsProMotion.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -88,9 +118,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E4A85E9251A37610077CDAC /* Build configuration list for PBXNativeTarget "AirPodsProMotion" */;
 			buildPhases = (
+				62EADCC09C7F1D0F9DAB59F5 /* [CP] Check Pods Manifest.lock */,
 				8E4A85D1251A37600077CDAC /* Sources */,
 				8E4A85D2251A37600077CDAC /* Frameworks */,
 				8E4A85D3251A37600077CDAC /* Resources */,
+				C839BCFF0DE4B307C7922E3E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -145,6 +177,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		62EADCC09C7F1D0F9DAB59F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AirPodsProMotion-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C839BCFF0DE4B307C7922E3E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AirPodsProMotion/Pods-AirPodsProMotion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AirPodsProMotion/Pods-AirPodsProMotion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AirPodsProMotion/Pods-AirPodsProMotion-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8E4A85D1251A37600077CDAC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -154,8 +228,10 @@
 				8E4A85DD251A37600077CDAC /* InformationViewController.swift in Sources */,
 				8E4A85D9251A37600077CDAC /* AppDelegate.swift in Sources */,
 				8EB3738625275C8600B9B3C0 /* TableViewController.swift in Sources */,
+				C1ADD7402553CABB00BED4DD /* ViewController.swift in Sources */,
 				8E4A85DB251A37600077CDAC /* SceneDelegate.swift in Sources */,
 				8EF9EA05251B690C00D239C4 /* SK3DViewController.swift in Sources */,
+				C1ADD7442553E97300BED4DD /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +367,7 @@
 		};
 		8E4A85EA251A37610077CDAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7AA215BEA82F399A66866D6 /* Pods-AirPodsProMotion.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +387,7 @@
 		};
 		8E4A85EB251A37610077CDAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABAB060DBA6B442B50B0F657 /* Pods-AirPodsProMotion.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

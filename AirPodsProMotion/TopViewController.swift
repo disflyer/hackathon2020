@@ -19,10 +19,12 @@ class TopViewController: UIViewController, UITableViewDataSource, UITableViewDel
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
-    private var items: [UIViewController] = [InformationViewController(), SK3DViewController(), TableViewController()]
-    private var itemTitle: [String] = ["Information View", "Rotate the Cube View", "Table scrolling by Head Motion"]
+    private var items: [UIViewController] = [InformationViewController(), SK3DViewController(), TableViewController(), ViewController()]
+    private var itemTitle: [String] = ["Information View", "Rotate the Cube View", "Table scrolling by Head Motion", "gameView"]
     
-    
+    var rootViewController: UIViewController {
+        return UINavigationController(rootViewController: ViewController())
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

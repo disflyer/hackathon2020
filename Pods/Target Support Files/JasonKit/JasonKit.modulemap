@@ -1,0 +1,6 @@
+framework module JasonKit {
+  umbrella header "JasonKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
