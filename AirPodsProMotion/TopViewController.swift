@@ -8,7 +8,6 @@
 import UIKit
 
 class TopViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
     private lazy var table: UITableView = {
         let table = UITableView(frame: self.view.bounds, style: .plain)
         table.autoresizingMask = [
@@ -19,7 +18,7 @@ class TopViewController: UIViewController, UITableViewDataSource, UITableViewDel
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
-    private var items: [UIViewController] = [InformationViewController(), SK3DViewController(), TableViewController(), ViewController()]
+    private var items: [UIViewController] = [InformationViewController(), HomeViewController(), TableViewController(), ViewController()]
     private var itemTitle: [String] = ["Information View", "Rotate the Cube View", "Table scrolling by Head Motion", "gameView"]
     
     var rootViewController: UIViewController {

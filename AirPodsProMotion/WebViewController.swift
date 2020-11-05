@@ -19,7 +19,7 @@ class WebViewController: JKWebViewController {
         super.init(url: url)
         DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { // Change `2.0` to the desired number of seconds.
            // Code you want to be delayed
-            self.webView.evaluateJavaScript("window.webDispatch&&window.webDispatch('right')")
+            self.webView.evaluateJavaScript("window.webDispatch&&window.webDispatch('left')")
         }
         
      

@@ -9,13 +9,14 @@ import UIKit
 import CoreMotion
 
 class InformationViewController: UIViewController, CMHeadphoneMotionManagerDelegate {
-
+    let bg: UIImageView = UIImageView()
+    let Bt: UIButton = UIButton()
     lazy var textView: UITextView = {
         let view = UITextView()
         view.frame = CGRect(x: self.view.bounds.minX + (self.view.bounds.width / 10),
                             y: self.view.bounds.minY + (self.view.bounds.height / 6),
                             width: self.view.bounds.width, height: self.view.bounds.height)
-        view.text = "Looking for AirPods Pro"
+        
         view.font = view.font?.withSize(14)
         view.isEditable = false
         return view
@@ -29,10 +30,21 @@ class InformationViewController: UIViewController, CMHeadphoneMotionManagerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.title = "Information View"
         view.backgroundColor = .systemBackground
-        view.addSubview(textView)
+        view.addSubview(self.bg)
+        bg.backgroundColor = UIColor.red
+        bg.translatesAutoresizingMaskIntoConstraints = false
+        bg.image = UIImage(named: "img1")
+        Bt.backgroundColor=UIColor.red
         
+        NSLayoutConstraint.activate([
+            bg.topAnchor.constraint(equalTo: view.topAnchor),
+            bg.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            bg.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bg.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
         
         APP.delegate = self
         
@@ -50,7 +62,6 @@ class InformationViewController: UIViewController, CMHeadphoneMotionManagerDeleg
     override func viewWillDisappear(_ animated: Bool) {
         APP.stopDeviceMotionUpdates()
     }
-    
     
     func printData(_ data: CMDeviceMotion) {
         print(data)
@@ -82,5 +93,9 @@ class InformationViewController: UIViewController, CMHeadphoneMotionManagerDeleg
             Heading:
                 \(data.heading)
             """
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.navigationController?.pushViewController(HomeViewController(), animated: true)
     }
 }

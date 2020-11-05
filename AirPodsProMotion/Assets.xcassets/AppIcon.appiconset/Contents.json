@@ -11,11 +11,13 @@
       "size" : "20x20"
     },
     {
+      "filename" : "58x58.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "icon87x87.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
