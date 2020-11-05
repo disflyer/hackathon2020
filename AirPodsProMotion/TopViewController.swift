@@ -19,8 +19,8 @@ class TopViewController: UIViewController, UITableViewDataSource, UITableViewDel
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
-    private var items: [UIViewController] = [InformationViewController(), SK3DViewController(), TableViewController(), ViewController()]
-    private var itemTitle: [String] = ["Information View", "Rotate the Cube View", "Table scrolling by Head Motion", "gameView"]
+    private var items: [UIViewController] = [InformationViewController(), SK3DViewController(), TableViewController(), ViewController(), HeadphonePoseViewController()]
+    private var itemTitle: [String] = ["Information View", "Rotate the Cube View", "Table scrolling by Head Motion", "gameView", "Shake Head View"]
     
     var rootViewController: UIViewController {
         return UINavigationController(rootViewController: ViewController())
