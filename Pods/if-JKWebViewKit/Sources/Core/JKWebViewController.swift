@@ -144,7 +144,7 @@ open class JKWebViewController: UIViewController, JKHybridCallbackHandlerProtoco
 
     open func shouldInjectHybridNativeDispatch() -> Bool {
         if let scheme = self.webView.url?.scheme,
-            (scheme == "http" || scheme == "https"),
+            scheme == "https",
             let matches = self.webView.url?.host?.matchingStrings(regex: Config.regexOfHostsAllowToInjectHybridCode),
             matches.count > 0 {
 

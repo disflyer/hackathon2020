@@ -37,16 +37,16 @@ DEPENDENCIES:
   - if-JKWebViewKit
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/iftechio/JKPodSpecs:
+    - if-AluminumKit
+    - if-JKWebViewKit
+    - JasonKit
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - ObjectMapper
     - RxCocoa
     - RxRelay
     - RxSwift
     - SnapKit
-  https://github.com/iftechio/JKPodSpecs:
-    - if-AluminumKit
-    - if-JKWebViewKit
-    - JasonKit
 
 SPEC CHECKSUMS:
   if-AluminumKit: 15f3a5cfe02638bbdd4c71a8ae118c4b539de955
@@ -58,6 +58,6 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: d6de5745a95b8b70959a139bf125008939ba60ec
+PODFILE CHECKSUM: a3b57daf8474cdbc935350299f581e2f7c260026
 
 COCOAPODS: 1.10.0
