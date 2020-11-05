@@ -44,7 +44,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let webviewCon = WebViewController(url: URL(string: "http://m.game.com")!)
+            let webviewCon = WebViewController(url: URL(string: "https://static.codefuture.top/hackaton_game/aircraft_war/index.html")!)
             self.navigationController?.pushViewController(webviewCon, animated: true)
         case 1:
             let webviewCon = WebViewController(url: URL(string: "http://m.game.com")!)
