@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>AirPodsPro</string>
+	<string>颈椎健康小助手</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -32,7 +32,7 @@
 		<true/>
 	</dict>
 	<key>NSMotionUsageDescription</key>
-	<string>AirPodsProのモーション取得のために使うよ</string>
+	<string>颈椎健康小助手想要获取耳机传感器数据</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

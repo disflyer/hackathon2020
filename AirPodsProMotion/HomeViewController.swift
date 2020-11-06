@@ -77,7 +77,7 @@ class HomeViewController: UIViewController, CMHeadphoneMotionManagerDelegate {
         self.navigationController?.pushViewController(webviewCon, animated: true)
     }
     @objc func tapClick2() {
-        let webviewCon = FireBallWebViewController(url: URL(string: "https://static.codefuture.top/hackaton_game/firing_balls_2/index.html")!)
+        let webviewCon = FireBallWebViewController(url: URL(string: "https://static.codefuture.top/hackaton_game/firing_balls_4/index.html")!)
         self.navigationController?.pushViewController(webviewCon, animated: true)
     }
     @objc func tapClick3() {

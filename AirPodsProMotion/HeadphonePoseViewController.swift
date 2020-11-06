@@ -228,48 +228,48 @@ class HeadphonePoseViewController: UIViewController, CMHeadphoneMotionManagerDel
         headNode?.simdTransform = mirrorTransform * rotation * referenceFrame
         let newHead = headPoint * mirrorTransform * rotation * referenceFrame
         
-//        let newX = newHead[0]
-//        if newX > 0 {
-//            print("left")
-//            left.textColor = .green
-//            right.textColor = .white
-//        } else if newX < 0 {
-//            print("right")
-//            right.textColor = .green
-//            left.textColor = .white
-//
-//        } else {
-//            left.textColor = .white
-//            right.textColor = .white
-//        }
-//        label.text = "\((Int)(newX / maxHeadX * 100))%, \((Int)(asin(newX) * 1800 / Float.pi))°"
-//
-//        let newZ = newHead[2]
-//        if newZ > 0 {
-//            print("up")
-//            up.textColor = .green
-//            down.textColor = .white
-//        } else if newZ < 0 {
-//            print("down")
-//            down.textColor = .green
-//            up.textColor = .white
-//        } else {
-//            up.textColor = .white
-//            up.textColor = .green
-//        }
-        
-        let newTower = towerPoint * mirrorTransform * rotation * referenceFrame
-        let newTowerX = newTower[0]
-        if newTowerX < 0 {
-            print("towerLeft")
+        let newX = newHead[0]
+        if newX > 0 {
+            print("left")
             left.textColor = .green
             right.textColor = .white
-        } else if newTowerX > 0 {
-            print("towerRight")
+        } else if newX < 0 {
+            print("right")
             right.textColor = .green
             left.textColor = .white
+
+        } else {
+            left.textColor = .white
+            right.textColor = .white
         }
-        label.text = "\((Int)(asin(newTowerX) * 540 / Float.pi))°"
+        label.text = "\((Int)(asin(newX) * 1800 / Float.pi))°"
+
+        let newZ = newHead[2]
+        if newZ > 0 {
+            print("up")
+            up.textColor = .green
+            down.textColor = .white
+        } else if newZ < 0 {
+            print("down")
+            down.textColor = .green
+            up.textColor = .white
+        } else {
+            up.textColor = .white
+            up.textColor = .green
+        }
+        
+//        let newTower = towerPoint * mirrorTransform * rotation * referenceFrame
+//        let newTowerX = newTower[0]
+//        if newTowerX < 0 {
+//            print("towerLeft")
+//            left.textColor = .green
+//            right.textColor = .white
+//        } else if newTowerX > 0 {
+//            print("towerRight")
+//            right.textColor = .green
+//            left.textColor = .white
+//        }
+//        label.text = "\((Int)(asin(newTowerX) * 540 / Float.pi))°"
 
         updateButtonState()
     }
