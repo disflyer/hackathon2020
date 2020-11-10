@@ -48,8 +48,8 @@ class HomeViewController: UIViewController, CMHeadphoneMotionManagerDelegate {
         bg.translatesAutoresizingMaskIntoConstraints = false
         bg.image = UIImage(named: "img2")
  
-        Bt1.frame = CGRect(x: 0, y: 0, width: 1000, height: 310)
-        Bt2.frame = CGRect(x: 0, y: 310, width: 1000, height: 310)
+        Bt1.frame = CGRect(x: 0, y: 150, width: 1000, height: 310)
+        Bt2.frame = CGRect(x: 0, y: 330, width: 1000, height: 140)
         Bt3.frame = CGRect(x: 0, y: 620, width: 1000, height: 1000)
         Bt1.addTarget(self, action: #selector(tapClick1), for: .touchUpInside)
         Bt2.addTarget(self, action: #selector(tapClick2), for: .touchUpInside)

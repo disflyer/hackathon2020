@@ -14,6 +14,7 @@ class FireBallWebViewController: JKWebViewController, CMHeadphoneMotionManagerDe
     
     let handler = JKHybridHandler()
     private var referenceButton: UIButton = UIButton()
+    private var backButton: UIButton = UIButton()
     private var motionManager = CMHeadphoneMotionManager()
     private var referenceFrame = matrix_identity_float4x4
     private var towerPoint = simd_float4(0.0, 0.0, 1.0, 0.0)
@@ -39,6 +40,8 @@ class FireBallWebViewController: JKWebViewController, CMHeadphoneMotionManagerDe
         
         self.view.addSubview(referenceButton)
         self.view.bringSubviewToFront(referenceButton)
+        self.view.addSubview(backButton)
+        self.view.bringSubviewToFront(backButton)
         referenceButton.translatesAutoresizingMaskIntoConstraints = false
         referenceButton.setTitle("复位", for: .normal)
         NSLayoutConstraint.activate([
@@ -46,6 +49,13 @@ class FireBallWebViewController: JKWebViewController, CMHeadphoneMotionManagerDe
             referenceButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
         ])
         referenceButton.addTarget(self, action: #selector(referenceFrameButtonWasTapped), for: .touchUpInside)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.setTitle("返回", for: .normal)
+        NSLayoutConstraint.activate([
+            backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            backButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
+        ])
+        backButton.addTarget(self, action: #selector(backFrameButtonWasTapped), for: .touchUpInside)
         
         if !motionManager.isDeviceMotionActive {
             weak var weakSelf = self
@@ -71,7 +81,10 @@ class FireBallWebViewController: JKWebViewController, CMHeadphoneMotionManagerDe
             referenceFrame = float4x4(rotationMatrix: deviceMotion.attitude.rotationMatrix).inverse
         }
     }
-    
+    @IBAction func backFrameButtonWasTapped(_ sender: UIButton)
+    {
+        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+    }
     // MARK: Headphone Device Motion Handlers
     
     func headphoneMotionManager(_ motionManager: CMHeadphoneMotionManager, didUpdate deviceMotion: CMDeviceMotion) {
